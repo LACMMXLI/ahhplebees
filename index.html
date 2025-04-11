@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparte y Gana - Ahh Plebee's</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@400;700&display=swap');
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Rubik', sans-serif;
+      background: radial-gradient(circle at center, #1a1a1a, #000000);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      min-height: 100vh;
+      animation: fadeIn 3.5s ease-in;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+    .logo { width: 180px; margin-top: 20px; animation: bounce 1s ease; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    h1 {
+      font-family: 'Anton', sans-serif;
+      color: #f1f1f1;
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      margin: 20px 0 10px;
+      text-shadow: 0 0 10px #01ff16, 0 0 20px #FFD60A;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow { 0% { text-shadow: 0 0 10px #000000, 0 0 20px #ff0a0a; } 100% { text-shadow: 0 0 20px #FFD60A, 0 0 30px #000000; } }
+    .highlight { color: #ff0000; font-weight: bold; }
+    .card {
+      background: linear-gradient(145deg, #1f1f1f, #0a0a0a);
+      border: 0.px solid #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 100%;
+      text-align: center;
+      box-shadow: 0 0 16px #fff700;
+      animation: fadeInUp 1.2s ease;
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .instructions {
+      color: #FFD60A;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .copy-box {
+      background-color: #290a0a8c;
+      border: 1px dashed #FFD60A;
+      border-radius: 8px;
+      padding: 12px;
+      color: #FFD60A;
+      font-size: 0.9rem;
+      margin: 15px 0;
+      user-select: all;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      animation: flicker 3s infinite;
+    }
+    @keyframes flicker { 0%, 100% { box-shadow: 0 0 4px #FFD60A; } 50% { box-shadow: 0 0 10px #FFD60A; } }
+    .btn {
+      background-color: #3b00ee;
+      color: #ffffff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    .btn i { margin-right: 8px; }
+    .rules {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: #ff0000;
+      text-align: center;
+      max-width: 500px;
+      animation: fadeIn 2s ease;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 0 10px #25D366;
+      z-index: 999;
+      text-decoration: none;
+      animation: pulse 1.8s infinite;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .btn { font-size: 0.95rem; padding: 10px 16px; }
+      .copy-box { font-size: 0.85rem; }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const copyBox = document.querySelector(".copy-box");
+      const copyText = copyBox.innerText;
+      const audio = new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg");
+      copyBox.addEventListener("click", function () {
+        navigator.clipboard.writeText(copyText).then(() => {
+          copyBox.innerText = "¡Texto copiado al portapapeles!";
+          audio.play();
+          setTimeout(() => {
+            copyBox.innerText = copyText;
+          }, 2500);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <img src="logo.png" alt="Logo Ahh Plebee's" class="logo">
+  <h1>¡Comparte y gana <span class="highlight">50% de Descuento</span> en Ahh...Plebee's !!!</h1>
+  <div class="card">
+    <p>Comparte nuestro perfil en Facebook, consigue 50 likes y reclama tu descuento en tu siguiente visita.</p>
+    <div class="copy-box">
+      ¡Tienes que probar Ahh...Plebee’s Restaurant! Un lugar buenísimo en Mexicali para comer sabroso, con promos, atención chingona y un menú bien plebón. Comparte este perfil y ayúdame a conseguir 50 likes para ganarme un descuentazo.
+      Sigue su página aquí: https://www.facebook.com/ahhplebeesvoluntad
+      #PlebeesFatBoyChallenge
+    </div>
+    <div class="instructions">Copia este texto, pégalo en tu Facebook.</div>
+    <a href="https://www.facebook.com/ahhplebeesvoluntad" target="_blank" class="btn"><i class="fab fa-facebook-square"></i> Ir al perfil de Facebook</a>
+  </div>
+  <div class="rules">
+    * Válido solo una vez por persona. Debes mostrar la publicación desde tu perfil en el restaurante.<br>
+    * Se requiere un mínimo de 50 reacciones (likes, me encanta, etc.) en la publicación.<br>
+    * El descuento aplica únicamente en productos seleccionados y no es acumulable con otras promociones.<br>
+    * Ahh Plebee’s se reserva el derecho de verificar y validar las publicaciones.
+  </div>
+  <a href="https://wa.me/526861904787" class="whatsapp-float" target="_blank" title="¿Tienes dudas? Escríbenos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</body>
+</html>
